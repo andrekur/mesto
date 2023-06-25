@@ -1,0 +1,6 @@
+.profile__content {
+  height: 39px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 18px;
+}
