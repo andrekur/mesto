@@ -6,3 +6,11 @@
   flex-direction: row;
   column-gap: 30px;
 }
+
+@media screen and (max-width: 660px) {
+  .profile {
+    flex-direction: column;
+    height: 286px;
+    column-gap: 0;
+  }
+}

@@ -5,3 +5,22 @@
   grid-template-rows: repeat(2, 361px);
   gap: 20px 17px;
 }
+
+@media screen and (max-width: 879px) {
+  .photos {
+    grid-template-columns: repeat(2, 282px);
+    grid-template-rows: repeat(3, 361px);
+    gap: 20px 17px;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .photos {
+    grid-template-columns: repeat(1, 282px);
+    grid-template-rows: repeat(6, 361px);
+    gap: 20px 0;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+}
