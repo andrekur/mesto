@@ -2,14 +2,23 @@
   border: none;
   padding: 0;
   background-color: transparent;
-  background-image: url("../../../images/close_btn.svg");
+  background-image: url(../../../images/buttons/close_popup_button.svg);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   outline: none;
   position: absolute;
-  top: 28px;
-  right: 50px;
+  top: -40px;
+  right: -40px;
   width: 32px;
   height: 32px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 660px) {
+  .popup__close {
+    top: -36px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
 }

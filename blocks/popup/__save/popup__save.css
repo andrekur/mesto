@@ -1,15 +1,21 @@
 .popup__save {
-  border: none;
+  border-radius: 2px;
+  background: #000;
   padding: 0;
-  background-color: transparent;
-  background-image: url("../../../images/close_btn.svg");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
   outline: none;
-  position: absolute;
-  top: 28px;
-  right: 50px;
-  width: 32px;
-  height: 32px;
+  bottom: 0;
+  height: 50px;
   cursor: pointer;
+  color: #FFF;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+
+@media screen and (max-width: 660px) {
+  .popup__title {
+    height: 46px;
+  }
 }
