@@ -3,7 +3,6 @@
   margin-bottom: 54px;
   color: #000;
   font-size: 24px;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-weight: 900;
   height: 23px;
 }
@@ -11,5 +10,6 @@
 @media screen and (max-width: 660px) {
   .popup__title {
     font-size: 18px;
+    margin-bottom: 75px;
   }
 }

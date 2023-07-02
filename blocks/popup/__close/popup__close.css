@@ -12,6 +12,11 @@
   width: 32px;
   height: 32px;
   cursor: pointer;
+  flex-shrink: 0;
+}
+
+.popup__close:hover {
+  opacity: .6;
 }
 
 @media screen and (max-width: 660px) {
@@ -20,5 +25,6 @@
     right: 0;
     width: 20px;
     height: 20px;
+    background-size: 20px 20px;
   }
 }

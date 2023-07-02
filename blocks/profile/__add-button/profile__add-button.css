@@ -8,13 +8,20 @@
   background-position: center center;
   background-repeat: no-repeat;
   border-width: 0;
+  border-radius: 2px;
   border: 2px solid #fff;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
-@media screen and (max-width: 660px) {
+.profile__add-button:hover {
+  opacity: .6;
+}
+
+@media screen and (max-width: 768px) {
   .profile__add-button {
     width: 282px;
     margin: 0 auto;
+    background-size: 16px 16px;
   }
 }

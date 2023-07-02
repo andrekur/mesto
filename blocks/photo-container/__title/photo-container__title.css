@@ -1,8 +1,8 @@
 .photo-container__title {
+  margin: 0;
   max-width: 222px;
   color: #000;
   font-size: 24px;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-weight: 900;
   text-overflow: ellipsis;
   white-space: nowrap;

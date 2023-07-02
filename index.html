@@ -24,48 +24,50 @@
           <button class="profile__add-button" type="button"></button>
         </section>
         <section class="photos">
-          <div class="photo-container">
+          <ul class="photos__items">
+          <li class="photo-container">
             <img class="photo-container__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
             <div class="photo-container__content">
-              <a class="photo-container__title">Карачаевск</a>
+              <h2 class="photo-container__title">Карачаевск</h2>
               <button class="photo-container__like-button" type="button"></button>
             </div>
-          </div>
-          <div class="photo-container">
+          </li>
+          <li class="photo-container">
             <img class="photo-container__image" src="./images/Gora_Elbrus-1.png" alt="Гора Эльбрус">
             <div class="photo-container__content">
-              <a class="photo-container__title">Гора Эльбрус</a>
+              <h2 class="photo-container__title">Гора Эльбрус</h2>
               <button class="photo-container__like-button" type="button"></button>
             </div>
-          </div>
-          <div class="photo-container">
+          </li>
+          <li class="photo-container">
             <img class="photo-container__image" src="./images/Dombai.png" alt="Домбай">
             <div class="photo-container__content">
-              <a class="photo-container__title">Домбай</a>
+              <h2 class="photo-container__title">Домбай</h2>
               <button class="photo-container__like-button" type="button"></button>
             </div>
-          </div>
-          <div class="photo-container">
+          </li>
+          <li class="photo-container">
             <img class="photo-container__image" src="./images/Gora_Elbrus-1.png" alt="Гора Эльбрус">
             <div class="photo-container__content">
-              <a class="photo-container__title">Гора Эльбрус</a>
+              <h2 class="photo-container__title">Гора Эльбрус</h2>
               <button class="photo-container__like-button" type="button"></button>
             </div>
-          </div>
-          <div class="photo-container">
+          </li>
+          <li class="photo-container">
             <img class="photo-container__image" src="./images/Dombai.png" alt="Домбай">
             <div class="photo-container__content">
-              <a class="photo-container__title">Домбай</a>
+              <h2 class="photo-container__title">Домбай</h2>
               <button class="photo-container__like-button" type="button"></button>
             </div>
-          </div>
-          <div class="photo-container">
+          </li>
+          <li class="photo-container">
             <img class="photo-container__image" src="./images/Karachaevo_cherkessiya.png" alt="Карачаево-черкессия">
             <div class="photo-container__content">
-              <a class="photo-container__title">Карачаево-черкессия</a>
+              <h2 class="photo-container__title">Карачаево-черкессия</h2>
               <button class="photo-container__like-button" type="button"></button>
             </div>
-          </div>
+          </li>
+        </ul>
         </section>
       </main>
       <footer class="footer">
@@ -73,13 +75,13 @@
       </footer>
     </div>
     <div class="popup">
-      <div class="popup__content">
+      <form class="popup__content">
         <button class="popup__close" type="button"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__input-text popup__input-text_name" type="text">
-        <input class="popup__input-text popup__input-text_job" type="text">
-        <input class="popup__save" type="submit" value="Сохранить">
-      </div>
+        <input class="popup__input popup__input_field_name" type="text" name="username" placeholder="ввод">
+        <input class="popup__input popup__input_field_job" type="text" name="job" placeholder="ввод">
+        <button class="popup__save" type="submit">Сохранить</button>
+      </form>
     </div>
     <script src="./scripts/index.js"></script>
   </body>
