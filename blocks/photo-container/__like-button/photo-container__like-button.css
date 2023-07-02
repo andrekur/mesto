@@ -7,9 +7,8 @@
   background-color: #fff;
   cursor: pointer;
   background-image: url(../../../images/like/like.svg);
-  cursor: pointer;
 }
 
-.photo-container__like-button {
+.photo-container__like-button:hover {
   opacity: .6;
 }
