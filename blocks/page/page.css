@@ -27,8 +27,14 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px){
   .page {
     padding: 0 min(19px, 15.625%);
+  }
+}
+
+@media screen and (max-width: 480px){
+  .page {
+    padding: 0 0;
   }
 }

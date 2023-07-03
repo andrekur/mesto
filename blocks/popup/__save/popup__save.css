@@ -10,6 +10,9 @@
   box-sizing: border-box;
   flex-shrink: 0;
   border: none;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 50px;
 }
 
 .popup__save:hover {
@@ -17,7 +20,8 @@
 }
 
 @media screen and (max-width: 660px) {
-  .popup__title {
+  .popup__save {
     font-size: 14px;
+    min-height: 46px;
   }
 }
