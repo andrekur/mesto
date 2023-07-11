@@ -24,50 +24,7 @@
           <button class="profile__add-button" type="button"></button>
         </section>
         <section class="photos">
-          <ul class="photos__items">
-          <li class="photo-container">
-            <img class="photo-container__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
-            <div class="photo-container__content">
-              <h2 class="photo-container__title">Карачаевск</h2>
-              <button class="photo-container__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-container">
-            <img class="photo-container__image" src="./images/Gora_Elbrus-1.png" alt="Гора Эльбрус">
-            <div class="photo-container__content">
-              <h2 class="photo-container__title">Гора Эльбрус</h2>
-              <button class="photo-container__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-container">
-            <img class="photo-container__image" src="./images/Dombai.png" alt="Домбай">
-            <div class="photo-container__content">
-              <h2 class="photo-container__title">Домбай</h2>
-              <button class="photo-container__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-container">
-            <img class="photo-container__image" src="./images/Gora_Elbrus-1.png" alt="Гора Эльбрус">
-            <div class="photo-container__content">
-              <h2 class="photo-container__title">Гора Эльбрус</h2>
-              <button class="photo-container__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-container">
-            <img class="photo-container__image" src="./images/Dombai.png" alt="Домбай">
-            <div class="photo-container__content">
-              <h2 class="photo-container__title">Домбай</h2>
-              <button class="photo-container__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="photo-container">
-            <img class="photo-container__image" src="./images/Karachaevo_cherkessiya.png" alt="Карачаево-черкессия">
-            <div class="photo-container__content">
-              <h2 class="photo-container__title">Карачаево-черкессия</h2>
-              <button class="photo-container__like-button" type="button"></button>
-            </div>
-          </li>
-        </ul>
+          <ul class="photos__items"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -85,6 +42,15 @@
         </form>
       </div>
     </div>
+    <template id="photo-container_template">
+      <li class="photo-container">
+        <img class="photo-container__image" alt="фотография">
+        <div class="photo-container__content">
+          <h2 class="photo-container__title"></h2>
+          <button class="photo-container__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
