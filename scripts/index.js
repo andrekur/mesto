@@ -62,12 +62,6 @@ popupForm.addEventListener('submit', handleFormSubmit);
 buttonProfileEdit.addEventListener('click', openPopup);
 buttonClosePopup.addEventListener('click', closePopup);
 
-function setDefaultImage() {
-  initialCards.map((item) => {addPhoto(item.name, item.link)});
-};
-
-//TODO photo delete function
-//TODO like handler
 //TODO add popup transition
 //TODO validation
 //TODO ADD card popup
@@ -81,7 +75,21 @@ function addPhoto(title, link) {
   photoContainerItem.querySelector('.photo-container__image').src = link;
   photoContainerItem.querySelector('.photo-container__title').textContent = title;
 
+  let likeButton = photoContainerItem.querySelector('.photo-container__like-button');
+  likeButton.addEventListener('click', function (event) {
+    event.target.classList.toggle('photo-container__like-button_active')
+  });
+
+  let deleteButton = photoContainerItem.querySelector('.photo-container__delete-button');
+  deleteButton.addEventListener('click', function (event) {
+    photoContainerItem.remove();
+  });
+
   photoItems.append(photoContainerItem)
 }
+
+function setDefaultImage() {
+  initialCards.map((item) => {addPhoto(item.name, item.link)});
+};
 
 setDefaultImage();
