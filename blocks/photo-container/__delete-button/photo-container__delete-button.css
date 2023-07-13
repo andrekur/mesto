@@ -1,5 +1,15 @@
 .photo-container__delete-button {
+  margin: 0 0;
+  padding: 0 0;
+  height: 19px;
+  width: 18px;
   position: absolute;
-  top: 0;
-  right: 0;
+  border: none;
+  cursor: pointer;
+  top: 20px;
+  right: 20px;
+  background-image: url(../../../images/buttons/delete_image.svg);
+  background-color: transparent;
+  object-position: center;
+  object-fit: cover;
 }

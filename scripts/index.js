@@ -25,46 +25,71 @@ const initialCards = [
   }
 ];
 
-let buttonProfileEdit = document.querySelector('.profile__edit-button');
 let photoItems = document.querySelector('.photos__items')
-let popup = document.querySelector('.popup');
-let buttonClosePopup = popup.querySelector('.popup__close');
+
+
+let editProfilePopup = document.querySelector('#editProfilePopup');
+let editProfileOpenButton = document.querySelector('.profile__edit-button');
+let editProfileCloseButton = editProfilePopup.querySelector('.popup__close');
+let editProfilePopupForm = editProfilePopup.querySelector('.popup__content');
 let userFullName = document.querySelector('.profile__full-name');
 let userJob = document.querySelector('.profile__description');
-
-let popupForm = document.querySelector('.popup__content');
-let nameInput = popup.querySelector('.popup__input_field_name');
-let jobInput = popup.querySelector('.popup__input_field_job');
+let nameInput = editProfilePopup.querySelector('.popup__input_field_name');
+let jobInput = editProfilePopup.querySelector('.popup__input_field_job');
 
 
-function openPopup() {
+let addImagePopup = document.querySelector('#addImagePopup');
+let addImageOpenButton = document.querySelector('.profile__add-button');
+let addImageCloseButton = addImagePopup.querySelector('.popup__close');
+let addImagePopupForm = addImagePopup.querySelector('.popup__content');
+
+
+function openPopup(popup) {
   if (!popup.classList.contains('popup_opened')) {
-    nameInput.value = userFullName.textContent;
-    jobInput.value = userJob.textContent;
     popup.classList.add('popup_opened');
   }
 }
 
-function closePopup() {
+function closePopup(popup) {
   if (popup.classList.contains('popup_opened')) {
     popup.classList.remove('popup_opened');
   }
 }
 
-function handleFormSubmit (evt) {
-  evt.preventDefault();
-  userFullName.textContent = nameInput.value;
-  userJob.textContent = jobInput.value;
-  closePopup();
+function openEditProfilePopup() {
+  nameInput.value = userFullName.textContent;
+  jobInput.value = userJob.textContent;
+  openPopup(editProfilePopup);
 }
 
-popupForm.addEventListener('submit', handleFormSubmit);
-buttonProfileEdit.addEventListener('click', openPopup);
-buttonClosePopup.addEventListener('click', closePopup);
+function handleEditProfileFormSubmit (event) {
+  event.preventDefault();
+  userFullName.textContent = nameInput.value;
+  userJob.textContent = jobInput.value;
+  closePopup(editProfilePopup);
+}
+
+function handleAddImageFormSubmit (event) {
+  event.preventDefault();
+  const eventTarget = event.target;
+  let imageTitle = eventTarget.querySelector('.popup__input_field_title');
+  let imageLink = eventTarget.querySelector('.popup__input_field_url');
+  addPhoto(imageTitle.value, imageLink.value);
+  imageTitle.value = '';
+  imageLink.value = '';
+  closePopup(addImagePopup);
+}
+
+editProfilePopupForm.addEventListener('submit', handleEditProfileFormSubmit);
+editProfileOpenButton.addEventListener('click', function () { openPopup(editProfilePopup) });
+editProfileCloseButton.addEventListener('click', function () { closePopup(editProfilePopup) });
+
+addImagePopupForm.addEventListener('submit', handleAddImageFormSubmit);
+addImageOpenButton.addEventListener('click', function () { openPopup(addImagePopup) });
+addImageCloseButton.addEventListener('click', function () { closePopup(addImagePopup) });
 
 //TODO add popup transition
 //TODO validation
-//TODO ADD card popup
 //image popup
 
 function addPhoto(title, link) {
@@ -89,7 +114,7 @@ function addPhoto(title, link) {
 }
 
 function setDefaultImage() {
-  initialCards.map((item) => {addPhoto(item.name, item.link)});
+  initialCards.map(({name, link}) => {addPhoto(name, link)});
 };
 
 setDefaultImage();
