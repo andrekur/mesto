@@ -25,13 +25,13 @@ const initialCards = [
   }
 ];
 
-let photoItems = document.querySelector('.photos__items')
+let photoItems = document.querySelector('.photos__items');
 
 
 let editProfilePopup = document.querySelector('#editProfilePopup');
 let editProfileOpenButton = document.querySelector('.profile__edit-button');
 let editProfileCloseButton = editProfilePopup.querySelector('.popup__close');
-let editProfilePopupForm = editProfilePopup.querySelector('.popup__content');
+let editProfilePopupForm = editProfilePopup.querySelector('#formEditProfilePopup');
 let userFullName = document.querySelector('.profile__full-name');
 let userJob = document.querySelector('.profile__description');
 let nameInput = editProfilePopup.querySelector('.popup__input_field_name');
@@ -41,26 +41,38 @@ let jobInput = editProfilePopup.querySelector('.popup__input_field_job');
 let addImagePopup = document.querySelector('#addImagePopup');
 let addImageOpenButton = document.querySelector('.profile__add-button');
 let addImageCloseButton = addImagePopup.querySelector('.popup__close');
-let addImagePopupForm = addImagePopup.querySelector('.popup__content');
+let addImagePopupForm = addImagePopup.querySelector('#formAddImagePopup');
+
+
+let zoomImagePopup = document.querySelector('#viewZoomImagePopup');
+let zoomImageItem = zoomImagePopup.querySelector('.popup__image');
+let zoomImageFigcaption = zoomImagePopup.querySelector('.popup__figcaption');
+let zoomImageCloseButton = zoomImagePopup.querySelector('.popup__close');
 
 
 function openPopup(popup) {
   if (!popup.classList.contains('popup_opened')) {
     popup.classList.add('popup_opened');
-  }
-}
+  };
+};
 
 function closePopup(popup) {
   if (popup.classList.contains('popup_opened')) {
     popup.classList.remove('popup_opened');
-  }
-}
+  };
+};
 
 function openEditProfilePopup() {
   nameInput.value = userFullName.textContent;
   jobInput.value = userJob.textContent;
   openPopup(editProfilePopup);
-}
+};
+
+function openZoomImagePopup(title, link){
+  zoomImageFigcaption.textContent = title;
+  zoomImageItem.src = link;
+  openPopup(zoomImagePopup);
+};
 
 function handleEditProfileFormSubmit (event) {
   event.preventDefault();
@@ -75,22 +87,19 @@ function handleAddImageFormSubmit (event) {
   let imageTitle = eventTarget.querySelector('.popup__input_field_title');
   let imageLink = eventTarget.querySelector('.popup__input_field_url');
   addPhoto(imageTitle.value, imageLink.value);
-  imageTitle.value = '';
-  imageLink.value = '';
+  addImagePopupForm.reset();
   closePopup(addImagePopup);
 }
 
 editProfilePopupForm.addEventListener('submit', handleEditProfileFormSubmit);
-editProfileOpenButton.addEventListener('click', function () { openPopup(editProfilePopup) });
+editProfileOpenButton.addEventListener('click', openEditProfilePopup);
 editProfileCloseButton.addEventListener('click', function () { closePopup(editProfilePopup) });
 
 addImagePopupForm.addEventListener('submit', handleAddImageFormSubmit);
 addImageOpenButton.addEventListener('click', function () { openPopup(addImagePopup) });
 addImageCloseButton.addEventListener('click', function () { closePopup(addImagePopup) });
 
-//TODO add popup transition
-//TODO validation
-//image popup
+zoomImageCloseButton.addEventListener('click', function() { closePopup(zoomImagePopup)} );
 
 function addPhoto(title, link) {
 
@@ -109,6 +118,9 @@ function addPhoto(title, link) {
   deleteButton.addEventListener('click', function (event) {
     photoContainerItem.remove();
   });
+
+  let imageItem = photoContainerItem.querySelector('.photo-container__image');
+  imageItem.addEventListener('click', function (event) { openZoomImagePopup(title, link) });
 
   photoItems.append(photoContainerItem)
 }
