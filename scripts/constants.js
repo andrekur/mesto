@@ -26,6 +26,7 @@ const initialCards = [
 ];
 
 let photoItems = document.querySelector('.photos__items');
+const popupOpenedClass = 'popup_opened'
 
 
 let editProfilePopup = document.querySelector('#editProfilePopup');
@@ -48,3 +49,13 @@ let zoomImagePopup = document.querySelector('#viewZoomImagePopup');
 let zoomImageItem = zoomImagePopup.querySelector('.popup__image');
 let zoomImageFigcaption = zoomImagePopup.querySelector('.popup__figcaption');
 let zoomImageCloseButton = zoomImagePopup.querySelector('.popup__close');
+
+
+validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save',
+  inactiveButtonClass: 'popup__save_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_visible'
+};

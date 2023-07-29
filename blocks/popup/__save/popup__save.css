@@ -10,7 +10,7 @@
   box-sizing: border-box;
   flex-shrink: 0;
   border: none;
-  margin: 0 auto;
+  margin: 13px auto 0;
   width: 100%;
   min-height: 50px;
 }
@@ -21,6 +21,7 @@
 
 @media screen and (max-width: 660px) {
   .popup__save {
+    margin-top: 10px;
     font-size: 14px;
     min-height: 46px;
   }

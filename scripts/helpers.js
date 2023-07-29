@@ -1,13 +1,21 @@
 function openPopup(popup) {
-  if (!popup.classList.contains('popup_opened')) {
-    popup.classList.add('popup_opened');
+  if (!popup.classList.contains(popupOpenedClass)) {
+    popup.classList.add(popupOpenedClass);
+    document.addEventListener('keyup', keyEscHandler);
+    document.addEventListener('click', overlayClickHandler);
   };
 };
 
 function closePopup(popup) {
-  if (popup.classList.contains('popup_opened')) {
-    popup.classList.remove('popup_opened');
+  if (popup.classList.contains(popupOpenedClass)) {
+    popup.classList.remove(popupOpenedClass);
+    document.removeEventListener('keyup', keyEscHandler);
+    document.removeEventListener('click', overlayClickHandler);
   };
+};
+
+function getOpenedPopup(){
+  return document.querySelector(`.${popupOpenedClass}`);
 };
 
 function openEditProfilePopup() {
@@ -79,4 +87,20 @@ function renderInitalCards() {
 
 function getImageAltCaption(title) {
   return `Изображение: ${title}`;
+};
+
+function keyEscHandler(evt){
+  const popup = getOpenedPopup();
+
+  if (evt.key === 'Escape' && popup){
+    closePopup(popup);
+ };
+};
+
+function overlayClickHandler(evt){
+  const popup = getOpenedPopup();
+
+  if (evt.target.contains(popup)) {
+   closePopup(popup);
+  };
 };

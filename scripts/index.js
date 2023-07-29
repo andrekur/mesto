@@ -9,3 +9,4 @@ addImageCloseButton.addEventListener('click', function () { closePopup(addImageP
 zoomImageCloseButton.addEventListener('click', function() { closePopup(zoomImagePopup)} );
 
 renderInitalCards();
+enableValidation(validationConfig);
