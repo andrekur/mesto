@@ -1,12 +1,10 @@
-editProfilePopupForm.addEventListener('submit', handleEditProfileFormSubmit);
+editProfilePopupForm.addEventListener('submit', editProfileFormSubmitHandler);
 editProfileOpenButton.addEventListener('click', openEditProfilePopup);
-editProfileCloseButton.addEventListener('click', function () { closePopup(editProfilePopup) });
 
-addImagePopupForm.addEventListener('submit', handleAddImageFormSubmit);
+addImagePopupForm.addEventListener('submit', addImageFormSubmitHandler);
 addImageOpenButton.addEventListener('click', function () { openPopup(addImagePopup) });
-addImageCloseButton.addEventListener('click', function () { closePopup(addImagePopup) });
 
-zoomImageCloseButton.addEventListener('click', function() { closePopup(zoomImagePopup)} );
 
 renderInitalCards();
+setHandlerClosePopup();
 enableValidation(validationConfig);
