@@ -1,26 +1,26 @@
 const initialCards = [
   {
-    name: 'Архыз',
+    title: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    name: 'Челябинская область',
+    title: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-    name: 'Иваново',
+    title: 'Иваново',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-    name: 'Камчатка',
+    title: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    name: 'Холмогорский район',
+    title: 'Холмогорский район',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-    name: 'Байкал',
+    title: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
@@ -32,9 +32,9 @@ const popupOpenedClass = 'popup_opened'
 const editProfilePopup = document.querySelector('#editProfilePopup');
 const editProfileOpenButton = document.querySelector('.profile__edit-button');
 const editProfilePopupForm = editProfilePopup.querySelector('#formEditProfilePopup');
-const userFullName = document.querySelector('.profile__full-name');
+const userFullName = document.querySelector('.profile__full-title');
 const userJob = document.querySelector('.profile__description');
-const nameInput = editProfilePopup.querySelector('.popup__input_field_name');
+const titleInput = editProfilePopup.querySelector('.popup__input_field_title');
 const jobInput = editProfilePopup.querySelector('.popup__input_field_job');
 
 
