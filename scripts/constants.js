@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     title: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,30 +25,30 @@ const initialCards = [
   }
 ];
 
-const photoItems = document.querySelector('.photos__items');
-const popupOpenedClass = 'popup_opened'
+export const photoItems = document.querySelector('.photos__items');
+export const popupOpenedClass = 'popup_opened'
 
 
-const editProfilePopup = document.querySelector('#editProfilePopup');
-const editProfileOpenButton = document.querySelector('.profile__edit-button');
-const editProfilePopupForm = editProfilePopup.querySelector('#formEditProfilePopup');
-const userFullName = document.querySelector('.profile__full-title');
-const userJob = document.querySelector('.profile__description');
-const titleInput = editProfilePopup.querySelector('.popup__input_field_title');
-const jobInput = editProfilePopup.querySelector('.popup__input_field_job');
+export const editProfilePopup = document.querySelector('#editProfilePopup');
+export const editProfileOpenButton = document.querySelector('.profile__edit-button');
+export const editProfilePopupForm = editProfilePopup.querySelector('#formEditProfilePopup');
+export const userFullName = document.querySelector('.profile__full-name');
+export const userJob = document.querySelector('.profile__description');
+export const nameInput = editProfilePopup.querySelector('.popup__input_field_name');
+export const jobInput = editProfilePopup.querySelector('.popup__input_field_job');
 
 
-const addImagePopup = document.querySelector('#addImagePopup');
-const addImageOpenButton = document.querySelector('.profile__add-button');
-const addImagePopupForm = addImagePopup.querySelector('#formAddImagePopup');
+export const addImagePopup = document.querySelector('#addImagePopup');
+export const addImageOpenButton = document.querySelector('.profile__add-button');
+export const addImagePopupForm = addImagePopup.querySelector('#formAddImagePopup');
 
 
-const zoomImagePopup = document.querySelector('#viewZoomImagePopup');
-const zoomImageItem = zoomImagePopup.querySelector('.popup__image');
-const zoomImageFigcaption = zoomImagePopup.querySelector('.popup__figcaption');
+export const zoomImagePopup = document.querySelector('#viewZoomImagePopup');
+export const zoomImageItem = zoomImagePopup.querySelector('.popup__image');
+export const zoomImageFigcaption = zoomImagePopup.querySelector('.popup__figcaption');
 
 
-const validationConfig = {
+export const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__save',
