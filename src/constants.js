@@ -1,41 +1,43 @@
+import { UserInfo } from './UserInfo.js'
+
 export const initialCards = [
   {
     title: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
     title: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
     title: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
     title: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
     title: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
     title: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
 
-export const photoItems = document.querySelector('.photos__items');
+
+export const imageCardListSelector = '.photos__items'
+export const photoItems = document.querySelector(imageCardListSelector);
 export const popupOpenedClass = 'popup_opened'
 
 
 export const editProfilePopup = document.querySelector('#editProfilePopup');
 export const editProfileOpenButton = document.querySelector('.profile__edit-button');
 export const editProfilePopupForm = editProfilePopup.querySelector('#formEditProfilePopup');
-export const userFullName = document.querySelector('.profile__full-name');
-export const userJob = document.querySelector('.profile__description');
 export const nameInput = editProfilePopup.querySelector('.popup__input_field_name');
-export const jobInput = editProfilePopup.querySelector('.popup__input_field_job');
+export const descriptionInput = editProfilePopup.querySelector('.popup__input_field_description');
 
 
 export const addImagePopup = document.querySelector('#addImagePopup');
@@ -56,3 +58,7 @@ export const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_visible'
 };
+
+export const user = new UserInfo('.profile__full-name', '.profile__description');
+
+export const cardTemplateSelector = '#photo-container_template'

@@ -3,17 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto Russia</title>
   </head>
   <body class="body">
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Лого проекта">
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Лого проекта">
       </header>
       <main class="main">
         <section class="profile">
-          <img class="profile__avatar" src="./images/profile_avatar.svg" alt="Аватарка пользователя">
+          <img class="profile__avatar" src="<%=require('./images/profile_avatar.svg')%>" alt="Аватарка пользователя">
           <div class="profile__info">
             <div class="profile__content">
               <h1 class="profile__full-name">Жак-Ив Кусто</h1>
@@ -38,8 +37,8 @@
         <form class="popup__form" name="formEditProfilePopup" id="formEditProfilePopup">
           <input class="popup__input popup__input_field_name" id="username" type="text" name="username" placeholder="Имя" minlength="2" maxlength="40" required>
           <span class="username-error popup__input-error"></span>
-          <input class="popup__input popup__input_field_job"  id="job" type="text" name="job" placeholder="Профессия" minlength="2" maxlength="200" required>
-          <span class="job-error popup__input-error"></span>
+          <input class="popup__input popup__input_field_description"  id="description" type="text" name="description" placeholder="Описание" minlength="2" maxlength="200" required>
+          <span class="description-error popup__input-error"></span>
           <button class="popup__save" type="submit">Сохранить</button>
         </form>
       </div>
