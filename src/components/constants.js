@@ -1,4 +1,6 @@
-import { UserInfo } from './UserInfo.js'
+
+import { PopupWithImage } from './PopupWithImage.js'
+
 
 export const initialCards = [
   {
@@ -30,24 +32,14 @@ export const initialCards = [
 
 export const imageCardListSelector = '.photos__items'
 export const photoItems = document.querySelector(imageCardListSelector);
-export const popupOpenedClass = 'popup_opened'
-
 
 export const editProfilePopup = document.querySelector('#editProfilePopup');
 export const editProfileOpenButton = document.querySelector('.profile__edit-button');
 export const editProfilePopupForm = editProfilePopup.querySelector('#formEditProfilePopup');
-export const nameInput = editProfilePopup.querySelector('.popup__input_field_name');
-export const descriptionInput = editProfilePopup.querySelector('.popup__input_field_description');
-
 
 export const addImagePopup = document.querySelector('#addImagePopup');
 export const addImageOpenButton = document.querySelector('.profile__add-button');
 export const addImagePopupForm = addImagePopup.querySelector('#formAddImagePopup');
-
-
-export const zoomImagePopup = document.querySelector('#viewZoomImagePopup');
-export const zoomImageItem = zoomImagePopup.querySelector('.popup__image');
-export const zoomImageFigcaption = zoomImagePopup.querySelector('.popup__figcaption');
 
 
 export const validationConfig = {
@@ -58,7 +50,5 @@ export const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_visible'
 };
-
-export const user = new UserInfo('.profile__full-name', '.profile__description');
 
 export const cardTemplateSelector = '#photo-container_template'

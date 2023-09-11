@@ -6,16 +6,23 @@ export class PopupWithForm extends Popup {
 
     this._handleSubmitForm = handleSubmitForm.bind(this);
     this._form = Array.from(this._popup.getElementsByTagName('form'))[0];
+    this._inputList = Array.from(this._form.getElementsByTagName('input'));
   };
 
-  _getInputValues() {
-    const formFields = Array.from(this._form.getElementsByTagName('input'));
+  getInputValues() {
     const obj = {};
-    formFields.forEach((field) => {
+    this._inputList.forEach((field) => {
       obj[field.id] = field.value;
     });
 
-    return obj
+    return obj;
+  };
+
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
+      input.value = data[input.name];
+    });
   };
 
   setEventListeners() {
