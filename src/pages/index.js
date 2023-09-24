@@ -6,7 +6,8 @@ import {
   addImagePopupForm, addImageOpenButton,
   initialCards, validationConfig,
   imageCardListSelector,
-  cardTemplateSelector
+  cardTemplateSelector,
+  apiOptions, userConfig
 } from '../components/constants.js'
 
 import { PopupWithForm } from '../components/PopupWithForm.js'
@@ -14,6 +15,7 @@ import { Section } from '../components/Section.js'
 import { Card } from '../components/Card.js'
 import { PopupWithImage } from '../components/PopupWithImage';
 import { UserInfo } from '../components/UserInfo.js'
+import { Api } from '../components/Api.js'
 
 
 export function createCard(data) {
@@ -21,15 +23,29 @@ export function createCard(data) {
   return card.generateCard()
 };
 
+
+const api = new Api(apiOptions)
+//console.log(api.getAllCards())
+// получем данные пользователя
+// создаем пользователя с этими данными
+
+
 const userProfileForm = new FormValidator(editProfilePopupForm, validationConfig);
 userProfileForm.enableValidation();
 
-const user = new UserInfo('.profile__full-name', '.profile__description');
+const user = new UserInfo(userConfig, function() {
+  api.getUserPofile().then(
+    (data) => this.setUserInfoFull(data)
+  )
+});
 const editUserDataPopup = new PopupWithForm('#editProfilePopup', function(evt) {
   evt.preventDefault();
-
-  user.setUserInfo(this.getInputValues());
-  this.close();
+  const newUserData = this.getInputValues()
+  api.editUserProfile({name: newUserData.username, about: newUserData.description})
+    .then(() => {
+      user.setUserInfo(newUserData)
+      this.close()
+    })
 });
 editUserDataPopup.setEventListeners();
 
