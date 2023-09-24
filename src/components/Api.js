@@ -5,7 +5,6 @@ export class Api{
   };
 
   _sendRequest(url, options) {
-    console.log(url, options)
     return fetch(url, options)
       .then((response) => {
         if (response.ok) {
@@ -31,10 +30,7 @@ export class Api{
     return this._sendRequest(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        name: data.name,
-        about: data.about
-      })
+      body: JSON.stringify(data)
     })
   }
 

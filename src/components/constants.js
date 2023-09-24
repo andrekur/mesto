@@ -48,8 +48,8 @@ export const validationConfig = {
 };
 
 export const userConfig = {
-  userNameSelector: '.profile__full-name',
-  userDescriptionSelector: '.profile__description',
+  userNameSelector: '.profile__name',
+  userDescriptionSelector: '.profile__about',
   userAvatarSelector: '.profile__avatar'
 }
 

@@ -40,10 +40,9 @@ const user = new UserInfo(userConfig, function() {
 });
 const editUserDataPopup = new PopupWithForm('#editProfilePopup', function(evt) {
   evt.preventDefault();
-  const newUserData = this.getInputValues()
-  api.editUserProfile({name: newUserData.username, about: newUserData.description})
-    .then(() => {
-      user.setUserInfo(newUserData)
+  api.editUserProfile(this.getInputValues())
+    .then((data) => {
+      user.setUserInfo(data)
       this.close()
     })
 });
