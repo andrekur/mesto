@@ -75,11 +75,17 @@ addCardForm.enableValidation();
 
 
 const imageCardList = new Section({
-  data: initialCards,
   renderer: ({title, url}) => {
       const cardElement = createCard({title, url, zoomImagePopup});
       imageCardList.addItem(cardElement, true);
   }
 }, imageCardListSelector)
 
-imageCardList.renderItems()
+api.getAllCards()
+  .then((cards) => {
+    cards.forEach(cardData => {
+      console.log(12)
+      const cardElement = createCard(cardData);
+      imageCardList.addItem(cardElement)
+    });
+  })
