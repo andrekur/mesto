@@ -50,7 +50,7 @@ export const validationConfig = {
 export const userConfig = {
   userNameSelector: '.profile__name',
   userDescriptionSelector: '.profile__about',
-  userAvatarSelector: '.profile__avatar'
+  userAvatarSelector: '.profile__avatar-img'
 }
 
 export const cardTemplateSelector = '#photo-container_template'

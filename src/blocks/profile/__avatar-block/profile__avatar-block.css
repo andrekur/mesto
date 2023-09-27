@@ -1,6 +1,6 @@
-.test {
-  width: 120px;
+.profile__avatar-block {
   display: block;
+  width: 120px;
   height: 120px;
   border-radius: 50%;
   object-position: center;
@@ -9,30 +9,29 @@
   position: relative;
 }
 
-.test::before {
+.profile__avatar-block::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   left: 0;
   right: 0;
-  background-image: url(../../images/buttons/profile_edit_avatar.svg);
+  background-image: url(../../../images/buttons/profile_edit_avatar.svg);
   background-position: center center;
   background-repeat: no-repeat;
-
-  
+  border-radius: 50%;
   transition: 0.5s;
   opacity: 0;
 }
 
-.test:hover::before{
+.profile__avatar-block:hover::before{
   opacity: 1;
   bottom: 0;
   background-color: rgba(0, 0, 0, .6);
 }
 
 @media screen and (max-width: 768px) {
-  .test {
+  .profile__avatar-block {
     margin: 0 auto 26px;
   }
 }
