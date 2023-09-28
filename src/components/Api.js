@@ -48,8 +48,12 @@ export class Api{
     })
   }
 
-  createCard() {
-
+  createCard(data) {
+    return this._sendRequest(`${this._url}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify(data)
+    })
   }
 
   setLike() {
@@ -58,5 +62,12 @@ export class Api{
 
   unsetLike() {
 
+  }
+
+  delCard(cardId) {
+    return this._sendRequest(`${this._url}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers
+    })
   }
 };

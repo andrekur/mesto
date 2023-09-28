@@ -19,8 +19,19 @@ import { UserInfo } from '../components/UserInfo.js'
 import { Api } from '../components/Api.js'
 
 
-export function createCard(data) {
-  const card = new Card(data, cardTemplateSelector, function() { zoomImagePopup.open(this.getImageData()); });
+export function createCard(data, userId) {
+  const card = new Card(
+    data,
+    userId,
+    cardTemplateSelector,
+    function() { zoomImagePopup.open(this.getImageData()); },
+    function() {
+      api.delCard(this.getId())
+        .then((data) => {
+          this._deleteCard();
+        })
+    }
+  );
   return card.generateCard()
 };
 
@@ -75,10 +86,17 @@ editProfileAvatarOpenButton.addEventListener('click', () => {
 const addImagePopup = new PopupWithForm('#addImagePopup', function(evt) {
   evt.preventDefault();
 
-  const cardElement = createCard(this.getInputValues());
-  imageCardList.addItem(cardElement);
-  this.close()
+  const values = this.getInputValues()
+  
+  const requestData = {'name': values.name, 'link': values.url}
+  api.createCard(requestData)
+    .then((data) => {
+      const cardElement = createCard(data, user.getUserId());
+      imageCardList.addItem(cardElement);
+      this.close()
+  })
 });
+
 addImagePopup.setEventListeners();
 addImageOpenButton.addEventListener('click', () => {
   addImagePopup.open()

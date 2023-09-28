@@ -22,7 +22,9 @@
 @import url(../blocks/photo-container/__content/photo-container__content.css);
 @import url(../blocks/photo-container/__image/photo-container__image.css);
 @import url(../blocks/photo-container/__delete-button/photo-container__delete-button.css);
+@import url(../blocks/photo-container/__like-block/photo-container__like-block.css);
 @import url(../blocks/photo-container/__like-button/photo-container__like-button.css);
+@import url(../blocks/photo-container/__like-count/photo-container__like-count.css);
 @import url(../blocks/photo-container/__like-button/_active/photo-container__like-button_active.css);
 @import url(../blocks/photo-container/__title/photo-container__title.css);
 
