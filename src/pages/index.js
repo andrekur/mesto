@@ -2,9 +2,10 @@ import './index.css';
 
 import { FormValidator, } from '../components/FormValidator.js';
 import {
-  editProfilePopupForm, editProfileOpenButton,
+  editProfileInfoForm, editProfileInfoOpenButton,
+  editPofileAvatarForm, editProfileAvatarOpenButton,
   addImagePopupForm, addImageOpenButton,
-  initialCards, validationConfig,
+  validationConfig,
   imageCardListSelector,
   cardTemplateSelector,
   apiOptions, userConfig
@@ -25,20 +26,17 @@ export function createCard(data) {
 
 
 const api = new Api(apiOptions)
-//console.log(api.getAllCards())
-// получем данные пользователя
-// создаем пользователя с этими данными
-
-
-const userProfileForm = new FormValidator(editProfilePopupForm, validationConfig);
-userProfileForm.enableValidation();
 
 const user = new UserInfo(userConfig, function() {
   api.getUserPofile().then(
     (data) => this.setUserInfoFull(data)
   )
 });
-const editUserDataPopup = new PopupWithForm('#editProfilePopup', function(evt) {
+
+const userInfoForm = new FormValidator(editProfileInfoForm, validationConfig);
+userInfoForm.enableValidation();
+
+const editUserInfoPopup = new PopupWithForm('#editProfilePopup', function(evt) {
   evt.preventDefault();
   api.editUserProfile(this.getInputValues())
     .then((data) => {
@@ -46,13 +44,33 @@ const editUserDataPopup = new PopupWithForm('#editProfilePopup', function(evt) {
       this.close()
     })
 });
-editUserDataPopup.setEventListeners();
+editUserInfoPopup.setEventListeners();
 
-editProfileOpenButton.addEventListener('click', () => {
-  editUserDataPopup.setInputValues(user.getUserInfo())
-  userProfileForm.updateFormValid();
-  editUserDataPopup.open()
+editProfileInfoOpenButton.addEventListener('click', () => {
+  editUserInfoPopup.setInputValues(user.getUserInfo())
+  userInfoForm.updateFormValid();
+  editUserInfoPopup.open()
 });
+
+const userAvatarForm = new FormValidator(editPofileAvatarForm, validationConfig);
+userAvatarForm.enableValidation();
+
+const editUserAvatarPopup = new PopupWithForm('#editAvatarPopup', function(evt) {
+  evt.preventDefault();
+
+  const values = this.getInputValues()
+  const requestData = {'avatar': values.url}
+  api.editUserAvatar(requestData)
+    .then((data) => {
+      user.setAvatar(data.avatar)
+      this.close()
+    })
+});
+editUserAvatarPopup.setEventListeners()
+
+editProfileAvatarOpenButton.addEventListener('click', () => {
+  editUserAvatarPopup.open();
+})
 
 const addImagePopup = new PopupWithForm('#addImagePopup', function(evt) {
   evt.preventDefault();
@@ -84,7 +102,6 @@ const imageCardList = new Section({
 api.getAllCards()
   .then((cards) => {
     cards.forEach(cardData => {
-      console.log(12)
       const cardElement = createCard(cardData);
       imageCardList.addItem(cardElement)
     });

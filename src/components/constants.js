@@ -1,37 +1,13 @@
-export const initialCards = [
-  {
-    title: 'Архыз',
-    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    title: 'Челябинская область',
-    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    title: 'Иваново',
-    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    title: 'Камчатка',
-    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    title: 'Холмогорский район',
-    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    title: 'Байкал',
-    url: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-
 export const imageCardListSelector = '.photos__items'
 export const photoItems = document.querySelector(imageCardListSelector);
 
-export const editProfilePopup = document.querySelector('#editProfilePopup');
-export const editProfileOpenButton = document.querySelector('.profile__edit-button');
-export const editProfilePopupForm = editProfilePopup.querySelector('#formEditProfilePopup');
+export const editProfileInfoPopup = document.querySelector('#editProfilePopup');
+export const editProfileInfoOpenButton = document.querySelector('.profile__edit-button');
+export const editProfileInfoForm = editProfileInfoPopup.querySelector('#formEditProfilePopup');
+
+export const editProfileAvatarPopup = document.querySelector('#editAvatarPopup')
+export const editProfileAvatarOpenButton = document.querySelector('.profile__avatar-block')
+export const editPofileAvatarForm = editProfileAvatarPopup.querySelector('#formEditAvatar')
 
 export const addImagePopup = document.querySelector('#addImagePopup');
 export const addImageOpenButton = document.querySelector('.profile__add-button');

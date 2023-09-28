@@ -26,7 +26,6 @@ export class Api{
   }
 
   editUserProfile(data) {
-    console.log(this._headers)
     return this._sendRequest(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
@@ -34,8 +33,12 @@ export class Api{
     })
   }
 
-  editUserAvatar() {
-
+  editUserAvatar(data) {
+    return this._sendRequest(`${this._url}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(data)
+    })
   }
 
   getAllCards() {
