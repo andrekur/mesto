@@ -13,9 +13,6 @@ export class Api{
 
         throw new Error(response.statusText);
       })
-      .catch((error) => {
-        console.log(error)
-      });
   }
 
   getUserPofile() {
