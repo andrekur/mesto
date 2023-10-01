@@ -20,6 +20,13 @@ import { UserInfo } from '../components/UserInfo.js'
 import { Api } from '../components/Api.js'
 import { PopupWithConfirm } from '../components/PopupWithConfirm.js';
 
+const api = new Api(apiOptions)
+
+const user = new UserInfo(userConfig, function() {
+  api.getUserPofile().then(
+    (data) => this.setUserInfoFull(data)
+  )
+});
 
 export function createCard(data, userId) {
   const card = new Card(
@@ -62,15 +69,6 @@ export function createCard(data, userId) {
   return card.generateCard()
 };
 
-
-const api = new Api(apiOptions)
-
-const user = new UserInfo(userConfig, function() {
-  api.getUserPofile().then(
-    (data) => this.setUserInfoFull(data)
-  )
-});
-
 const userInfoForm = new FormValidator(editProfileInfoForm, validationConfig);
 userInfoForm.enableValidation();
 
@@ -99,9 +97,7 @@ const editUserAvatarPopup = new PopupWithForm('#editAvatarPopup', function(evt) 
   evt.preventDefault();
 
   renderLoading(this.buttonSubmit, true)
-  const values = this.getInputValues()
-  const requestData = {'avatar': values.url}
-  api.editUserAvatar(requestData)
+  api.editUserAvatar(this.getInputValues())
     .then((data) => {
       user.setAvatar(data.avatar)
       this.close()
@@ -119,7 +115,7 @@ const addImagePopup = new PopupWithForm('#addImagePopup', function(evt) {
 
   renderLoading(this.buttonSubmit, true)
   const values = this.getInputValues()
-  const requestData = {'name': values.name, 'link': values.url}
+  const requestData = {'name': values.name, 'link': values.image}
   api.createCard(requestData)
     .then((data) => {
       const cardElement = createCard(data, user.getUserId());
