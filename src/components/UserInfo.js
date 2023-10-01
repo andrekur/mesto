@@ -18,7 +18,7 @@ export class UserInfo {
 
   setUserInfoFull(data) {
     this._avatar.src = data.avatar;
-    this._id = data.id
+    this._id = data._id
 
     this.setUserInfo(data)
   }

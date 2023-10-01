@@ -1,5 +1,5 @@
 export class Card {
-  constructor(data, userId, containerTemplateSelector, handleCardClick, handleDeleteClick) {
+  constructor(data, userId, containerTemplateSelector, handleCardClick, handleDeleteClick, handleLikeClick) {
     this._containerTemplateSelector = containerTemplateSelector;
     this._id = data._id
     this._name = data.name;
@@ -13,9 +13,11 @@ export class Card {
     this._deleteButtonSelector = '.photo-container__delete-button';
     this._imageItemSelector = '.photo-container__image';
     this._imageTitleSelector = '.photo-container__title';
-    this._likeCountSelector = '.photo-container__like-count'
+    this._likeCountSelector = '.photo-container__like-count';
+    this.likeActiveClass = 'photo-container__like-button_active';
     this._handleCardClick = handleCardClick.bind(this);
     this._handleDeleteClick = handleDeleteClick.bind(this);
+    this._handleLikeClick = handleLikeClick.bind(this);
   };
 
   _getTemplate() {
@@ -33,7 +35,7 @@ export class Card {
     this._cardImage = this._element.querySelector(this._imageItemSelector);
     this._cardImage.src = this._url;
     this._cardImage.alt = this._getImageAltCaption();
-    this._element.querySelector(this._likeCountSelector).textContent = this._likes.length;
+    this.recalculateLike(this._likes);
 
 
     this._setEventListeners();
@@ -42,6 +44,11 @@ export class Card {
 
     return this._element;
   };
+
+  recalculateLike(likes) {
+    this._likes = Array.from(likes);
+    this._element.querySelector(this._likeCountSelector).textContent = this._likes.length;
+  }
   
   getId() {
     return this._id
@@ -49,10 +56,6 @@ export class Card {
 
   getImageData(){
     return {'title': this._name, 'url': this._url, 'altCaption': this._getImageAltCaption()};
-  };
-
-  _addHandlerLikeBitton(evt) {
-    evt.target.classList.toggle('photo-container__like-button_active');
   };
 
   _deleteCard() {
@@ -63,10 +66,15 @@ export class Card {
     this._cardImage.addEventListener('click', this._handleCardClick);
 
     const likeButton = this._element.querySelector(this._likeButtonSelector);
-    likeButton.addEventListener('click', this._addHandlerLikeBitton);
+    likeButton.addEventListener('click', this._handleLikeClick);
 
     const deleteButton = this._element.querySelector(this._deleteButtonSelector);
-    deleteButton.addEventListener('click', this._handleDeleteClick);
+    if (this.canDelete) {
+      deleteButton.addEventListener('click', this._handleDeleteClick);
+    }
+    else {
+      deleteButton.hidden = true;
+    }
   };
 
   _getImageAltCaption() {

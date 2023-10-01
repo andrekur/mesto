@@ -31,9 +31,9 @@ export const userConfig = {
 
 export const cardTemplateSelector = '#photo-container_template'
 
-const cohortNum = 'cohort-75'
+const cohortNum = 'cohort-76'
 const apiUrl = `https://mesto.nomoreparties.co/v1/${cohortNum}`
-const token = '979eeed8-c018-4b3b-9808-ccf51416ee30' // isn`t good idea
+const token = 'f22eb229-93ed-4f07-bd67-7afa7388cca6' // isn`t good idea
 export const apiOptions = {
   url: apiUrl,
   headers: {

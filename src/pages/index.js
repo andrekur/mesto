@@ -1,5 +1,6 @@
 import './index.css';
 
+import { renderLoading } from '../components/helpers.js'
 import { FormValidator, } from '../components/FormValidator.js';
 import {
   editProfileInfoForm, editProfileInfoOpenButton,
@@ -30,6 +31,22 @@ export function createCard(data, userId) {
         .then((data) => {
           this._deleteCard();
         })
+    },
+    function(evt) {
+      if (!evt.target.classList.contains(this.likeActiveClass)) {
+        api.setLike(this.getId())
+          .then((data) => {
+            evt.target.classList.add(this.likeActiveClass);
+            this.recalculateLike(data.likes);
+          })
+      }
+      else {
+        api.unsetLike(this.getId())
+          .then((data) => {
+            evt.target.classList.remove(this.likeActiveClass);
+            this.recalculateLike(data.likes);
+          })
+      }
     }
   );
   return card.generateCard()
@@ -49,11 +66,13 @@ userInfoForm.enableValidation();
 
 const editUserInfoPopup = new PopupWithForm('#editProfilePopup', function(evt) {
   evt.preventDefault();
+  renderLoading(this.buttonSubmit, true)
   api.editUserProfile(this.getInputValues())
     .then((data) => {
       user.setUserInfo(data)
       this.close()
     })
+    .finally(data => renderLoading(this.buttonSubmit, false))
 });
 editUserInfoPopup.setEventListeners();
 
@@ -69,6 +88,7 @@ userAvatarForm.enableValidation();
 const editUserAvatarPopup = new PopupWithForm('#editAvatarPopup', function(evt) {
   evt.preventDefault();
 
+  renderLoading(this.buttonSubmit, true)
   const values = this.getInputValues()
   const requestData = {'avatar': values.url}
   api.editUserAvatar(requestData)
@@ -76,6 +96,7 @@ const editUserAvatarPopup = new PopupWithForm('#editAvatarPopup', function(evt) 
       user.setAvatar(data.avatar)
       this.close()
     })
+    .finally(data => renderLoading(this.buttonSubmit, false))
 });
 editUserAvatarPopup.setEventListeners()
 
@@ -86,8 +107,8 @@ editProfileAvatarOpenButton.addEventListener('click', () => {
 const addImagePopup = new PopupWithForm('#addImagePopup', function(evt) {
   evt.preventDefault();
 
+  renderLoading(this.buttonSubmit, true)
   const values = this.getInputValues()
-  
   const requestData = {'name': values.name, 'link': values.url}
   api.createCard(requestData)
     .then((data) => {
@@ -95,6 +116,7 @@ const addImagePopup = new PopupWithForm('#addImagePopup', function(evt) {
       imageCardList.addItem(cardElement);
       this.close()
   })
+  .finally(data => renderLoading(this.buttonSubmit, false))
 });
 
 addImagePopup.setEventListeners();
@@ -112,7 +134,7 @@ addCardForm.enableValidation();
 
 const imageCardList = new Section({
   renderer: ({title, url}) => {
-      const cardElement = createCard({title, url, zoomImagePopup});
+      const cardElement = createCard({title, url, zoomImagePopup},  user.getUserId());
       imageCardList.addItem(cardElement, true);
   }
 }, imageCardListSelector)
@@ -120,7 +142,7 @@ const imageCardList = new Section({
 api.getAllCards()
   .then((cards) => {
     cards.forEach(cardData => {
-      const cardElement = createCard(cardData);
+      const cardElement = createCard(cardData, user.getUserId());
       imageCardList.addItem(cardElement)
     });
   })
