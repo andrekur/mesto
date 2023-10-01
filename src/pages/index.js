@@ -18,6 +18,7 @@ import { Card } from '../components/Card.js'
 import { PopupWithImage } from '../components/PopupWithImage';
 import { UserInfo } from '../components/UserInfo.js'
 import { Api } from '../components/Api.js'
+import { PopupWithConfirm } from '../components/PopupWithConfirm.js';
 
 
 export function createCard(data, userId) {
@@ -27,10 +28,19 @@ export function createCard(data, userId) {
     cardTemplateSelector,
     function() { zoomImagePopup.open(this.getImageData()); },
     function() {
-      api.delCard(this.getId())
+      popupWithConfirm.card = this;
+      
+      popupWithConfirm.changeHandleSubmit(function(evt) {
+        evt.preventDefault();
+
+        api.delCard(this.card.getId())
         .then((data) => {
-          this._deleteCard();
+          this.card._deleteCard();
+          this.close();
         })
+        
+      })
+      popupWithConfirm.open()
     },
     function(evt) {
       if (!evt.target.classList.contains(this.likeActiveClass)) {
@@ -127,6 +137,8 @@ addImageOpenButton.addEventListener('click', () => {
 const zoomImagePopup = new PopupWithImage('#viewZoomImagePopup');
 zoomImagePopup.setEventListeners();
 
+
+const popupWithConfirm = new PopupWithConfirm('#deleteCardPopup', () => {})
 
 const addCardForm = new FormValidator(addImagePopupForm, validationConfig);
 addCardForm.enableValidation();

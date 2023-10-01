@@ -80,4 +80,8 @@ export class Card {
   _getImageAltCaption() {
     return `Изображение: ${this._name}`;
   };
+
+  t() {
+    return this
+  }
 };
