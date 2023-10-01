@@ -115,7 +115,7 @@ const addImagePopup = new PopupWithForm('#addImagePopup', function(evt) {
 
   renderLoading(this.buttonSubmit, true)
   const values = this.getInputValues()
-  const requestData = {'name': values.name, 'link': values.image}
+  const requestData = {'name': values.title, 'link': values.image}
   api.createCard(requestData)
     .then((data) => {
       const cardElement = createCard(data, user.getUserId());
