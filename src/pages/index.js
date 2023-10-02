@@ -63,6 +63,9 @@ export function createCard(data, userId) {
               this.card.deleteCard();
               this.close();
             })
+            .catch(error => {
+              console.log(error)
+            });
         }
       )
 
