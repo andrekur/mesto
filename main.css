@@ -41,7 +41,7 @@
 .popup__input_field_title{margin-bottom:5px}
 .popup__input_field_url{margin-bottom:5px}
 .popup__input_type_error{border-color:red}
-.popup__content{background:#fff;border-radius:10px;box-shadow:0 0 25px 0 rgba(0,0,0,.15);box-sizing:border-box;color:#000;display:flex;flex-direction:column;height:100%;max-height:330px;max-width:430px;padding:34px 36px 37px;position:relative;width:100%}@media screen and (max-width:660px){.popup__content{max-height:322px;max-width:282px;padding:25px 22px}}
+.popup__content{background:#fff;border-radius:10px;box-shadow:0 0 25px 0 rgba(0,0,0,.15);box-sizing:border-box;color:#000;display:flex;flex-direction:column;max-height:330px;max-width:430px;min-height:181px;padding:34px 36px 37px;position:relative;width:100%}@media screen and (max-width:660px){.popup__content{max-height:322px;max-width:282px;padding:25px 22px}}
 .popup__save{background:#000;border:none;border-radius:2px;box-sizing:border-box;color:#fff;cursor:pointer;flex-shrink:0;font-size:18px;margin:13px auto 0;min-height:50px;outline:none;padding:0;text-align:center;width:100%}.popup__save:hover{opacity:.8}@media screen and (max-width:660px){.popup__save{font-size:14px;margin-top:10px;min-height:46px}}
 .popup__save_disabled{background:#fff;box-shadow:0 0 25px 0 rgba(0,0,0,.15);color:#000;cursor:not-allowed;font-family:Inter,Arial,Helvetica,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:normal;text-align:center}
 .popup__title{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:normal;margin:0}@media screen and (max-width:660px){.popup__title{font-size:18px}}
